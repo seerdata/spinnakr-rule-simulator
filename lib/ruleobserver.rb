@@ -11,26 +11,19 @@ class RuleObserver < RuleBase
   end
 
   def get_trigger
-    ['5','10','15','20']
+    ['5','10','15','20'].sample
   end
 
   def buildrule
-    msg_hash = Hash.new
-    msg_hash[:access_token] = get_token_id
-    dimension = get_dimension
-    msg_hash[:dimension] = dimension
-    msg_hash[:key] = get_key
-    msg_hash[:value] = get_value
-
-    # Publish out a random time on either side of day interval
-    msg_hash[:created_at] = @timesim.get_random_time(@options.d)
-
-    # Publish out the time now
-    # msg_hash[:created_at] = Time.now
-
-    msg_hash[:interval] = get_interval
-    msg_hash[:calculation] = get_calculation
-    msg_hash
+    rule_hash = Hash.new
+    rule_hash[:account] = get_account
+    rule_hash[:project] = get_project
+    rule_hash[:dimension] = get_dimension
+    rule_hash[:key] = get_key
+    rule_hash[:watch] = get_watch
+    rule_hash[:trigger] = get_trigger
+    rule_hash[:interval] = get_interval
+    rule_hash
   end
 
   def build_n_rules(n)
@@ -47,8 +40,8 @@ end
 require_relative './options'
 myoptions = Options.new
 options = myoptions.parse(ARGV)
-msg = Msgjob.new(options)
-puts msg.buildmsg
+rule = RuleObserver.new(options)
+puts rule.buildrule
 =end
 
 =begin

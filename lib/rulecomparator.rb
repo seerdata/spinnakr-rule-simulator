@@ -19,16 +19,16 @@ class RuleComparator < RuleBase
   end
 
   def buildrule
-    msg_hash = Hash.new
-    msg_hash[:account] = get_account
-    msg_hash[:project] = get_project
-    msg_hash[:dimension] = get_dimension
-    msg_hash[:key] = get_key
-    msg_hash[:calculation] = get_calculation
-    msg_hash[:threshold] = get_threshold
-    msg_hash[:operator] = get_operator
-    msg_hash[:interval] = get_interval
-    msg_hash
+    rule_hash = Hash.new
+    rule_hash[:account] = get_account
+    rule_hash[:project] = get_project
+    rule_hash[:dimension] = get_dimension
+    rule_hash[:key] = get_key
+    rule_hash[:calculation] = get_calculation
+    rule_hash[:threshold] = get_threshold
+    rule_hash[:operator] = get_operator
+    rule_hash[:interval] = get_interval
+    rule_hash
   end
 
   def build_n_rules(n)
@@ -41,12 +41,13 @@ class RuleComparator < RuleBase
   end
 end
 
-
+=begin
 require_relative './options'
 myoptions = Options.new
 options = myoptions.parse(ARGV)
 rule = RuleComparator.new(options)
 puts rule.buildrule
+=end
 
 =begin
 require_relative './options'
