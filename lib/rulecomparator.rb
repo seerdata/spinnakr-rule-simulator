@@ -11,7 +11,7 @@ class RuleComparator < RuleBase
   end
 
   def get_threshold
-    ['5','10','15','20']
+    ['5','10','15','20'].sample
   end
 
   def get_calculation
@@ -20,20 +20,14 @@ class RuleComparator < RuleBase
 
   def buildrule
     msg_hash = Hash.new
-    msg_hash[:access_token] = get_token_id
-    dimension = get_dimension
-    msg_hash[:dimension] = dimension
+    msg_hash[:account] = get_account
+    msg_hash[:project] = get_project
+    msg_hash[:dimension] = get_dimension
     msg_hash[:key] = get_key
-    msg_hash[:value] = get_value
-
-    # Publish out a random time on either side of day interval
-    msg_hash[:created_at] = @timesim.get_random_time(@options.d)
-
-    # Publish out the time now
-    # msg_hash[:created_at] = Time.now
-
-    msg_hash[:interval] = get_interval
     msg_hash[:calculation] = get_calculation
+    msg_hash[:threshold] = get_threshold
+    msg_hash[:operator] = get_operator
+    msg_hash[:interval] = get_interval
     msg_hash
   end
 
@@ -47,13 +41,12 @@ class RuleComparator < RuleBase
   end
 end
 
-=begin
+
 require_relative './options'
 myoptions = Options.new
 options = myoptions.parse(ARGV)
-msg = Msgjob.new(options)
-puts msg.buildmsg
-=end
+rule = RuleComparator.new(options)
+puts rule.buildrule
 
 =begin
 require_relative './options'
