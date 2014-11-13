@@ -10,8 +10,6 @@ class Options
     options.forever = false
     options.verbose = false
 
-    options.d = 10
-    options.e = "test.spnee.customer"
     options.i = 1
     options.m = "job-skills"
     options.n = 2
@@ -36,15 +34,7 @@ class Options
         options.m = m
       end
 
-      opts.on("-e Exchange", "String Exchange name") do |c|
-        options.e = c
-      end
-
       # Integer Options
-
-      opts.on("-d Days", Integer, "Integer Time simulation interval") do |x|
-        options.d = x
-      end
 
       opts.on("-i Iterations", Integer, "Integer Publish i iterations") do |x|
         options.i = x
