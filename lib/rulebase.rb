@@ -21,4 +21,13 @@ class RuleBase
     ['hours','days','weeks','months']
   end
 
+  def build_n_rules(n)
+    rules = []
+    for i in 0..n
+      myrule = buildrule
+      rules.push(myrule)
+    end
+    rules
+  end
+
 end

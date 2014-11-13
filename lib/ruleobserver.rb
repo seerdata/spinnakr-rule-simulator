@@ -25,15 +25,6 @@ class RuleObserver < RuleBase
     rule_hash[:interval] = get_interval
     rule_hash
   end
-
-  def build_n_rules(n)
-    messages = []
-    for i in 0..n
-      mymsg = buildmsg
-      messages.push(mymsg)
-    end
-    messages
-  end
 end
 
 =begin

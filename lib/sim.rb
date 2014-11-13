@@ -1,22 +1,12 @@
-require 'bunny'
-
 require_relative './options'
-require_relative './publisher'
+require_relative './poster'
 
 class Sim
   def run(options)
-    connection = Bunny.new
-    connection.start
 
-    channel = connection.create_channel
-    exchange_name = options.e
-    exchange = channel.fanout(exchange_name, :passive => true)
-
-    pub = Publisher.new
-    pub.publish(options,exchange)
-
+    post = Poster.new
+    post.publish(options)
     sleep 3.5
-    connection.close
   end
 end
 

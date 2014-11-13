@@ -1,34 +1,45 @@
 
-require_relative './msgjob'
-require_relative './msguuid'
-require_relative './msguseragent'
+require_relative './post'
+require_relative './rulecomparator'
+require_relative './ruleobserver'
 require 'json'
 
-class Publisher
+class Poster
 
-  def publish(options,exchange)
+  def initialize
+    @post = Post.new
+  end
+
+  def publish(options)
     if options.forever == true
-      publish_forever(options,exchange)
+      publish_forever(options)
     elsif options.i > 1
-      publish_iterations(options,exchange)
+      publish_iterations(options)
     else
-      publish_once(options,exchange)
+      publish_once(options)
     end
   end
 
-  def publish_once(options,exchange)
-    msg = get_message_type(options)
+  def publish_once(options)
+    rule = get_rule_type(options)
     n = options.n
-    msgs = msg.build_n_messages(n)
+    type = options.t
+    rules = rule.build_n_rules(n)
     for i in 1..n
-      exchange.publish(msgs[i].to_json)
+      if type == 'comparator'
+        @post.comparator(rules[i])
+      elsif type == 'observer'
+        @post.observer(rules[i])
+      else
+        print 'publish once type not found'
+      end
     end
     if options.verbose == true
-      print n, " messages were published to ", options.e; puts
+      print n, " rules were published to the api"; puts
     end
   end
 
-  def publish_iterations(options,exchange)
+  def publish_iterations(options)
     seconds = options.s
     iterations = options.i
     for i in 1..iterations
@@ -45,7 +56,7 @@ class Publisher
     end
   end
 
-  def publish_forever(options,exchange)
+  def publish_forever(options)
     while true
       seconds = options.s
       iterations = options.i
@@ -64,24 +75,19 @@ class Publisher
     end
   end
 
-  def get_message_type(options)
-    if options.m == 'uuid'
+  def get_rule_type(options)
+    if options.t == 'comparator'
       if options.verbose
-        puts 'Inside MsgUUID'
+        puts 'Inside Comparator'
       end
-      MsgUUID.new(options)
-    elsif options.m == 'user-agent'
+      RuleComparator.new(options)
+    elsif options.t == 'observer'
       if options.verbose
-        puts 'Inside MsgUserAgent'
+        puts 'Inside Observer'
       end
-      MsgUserAgent.new(options)
-    elsif options.m == 'job-skills'
-      if options.verbose
-        puts 'Inside Msgjob'
-      end
-      Msgjob.new(options)
+      RuleObserver.new(options)
     else
-      print 'publisher.rb ', options.m, ' is not a supported message dimension'
+      print 'poster.rb ', options.t, ' is not a supported rule type'
       puts
       exit
     end
