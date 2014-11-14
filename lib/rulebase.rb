@@ -18,7 +18,7 @@ class RuleBase
   end
 
   def get_interval
-    ['hours','days','weeks','months']
+    ['hours','days','weeks','months'].sample
   end
 
   def build_n_rules(n)

@@ -7,7 +7,7 @@ class RuleObserver < RuleBase
   end
 
   def get_watch
-    ['ruby','java','python'].sample
+    'keys'
   end
 
   def get_trigger

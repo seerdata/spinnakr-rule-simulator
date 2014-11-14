@@ -15,7 +15,7 @@ class RuleComparator < RuleBase
   end
 
   def get_calculation
-    ['count','sum','average','standard_deviation']
+    ['count','sum','average','standard_deviation'].sample
   end
 
   def buildrule
