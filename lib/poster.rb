@@ -11,13 +11,7 @@ class Poster
   end
 
   def publish(options)
-    if options.forever == true
-      publish_forever(options)
-    elsif options.i > 1
-      publish_iterations(options)
-    else
       publish_once(options)
-    end
   end
 
   def publish_once(options)
@@ -36,42 +30,6 @@ class Poster
     end
     if options.verbose == true
       print n, " rules were published to the api"; puts
-    end
-  end
-
-  def publish_iterations(options)
-    seconds = options.s
-    iterations = options.i
-    for i in 1..iterations
-      msg = get_message_type(options)
-      n = options.n
-      msgs = msg.build_n_messages(n)
-      for i in 1..n
-        exchange.publish(msgs[i].to_json)
-      end
-      if options.verbose == true
-        print n, " messages were published to ", options.e; puts
-      end
-      sleep seconds
-    end
-  end
-
-  def publish_forever(options)
-    while true
-      seconds = options.s
-      iterations = options.i
-      for i in 1..iterations
-        msg = get_message_type(options)
-        n = options.n
-        msgs = msg.build_n_messages(n)
-        for i in 1..n
-          exchange.publish(msgs[i].to_json)
-        end
-        if options.verbose == true
-          print n, " messages were published to ", options.e; puts
-        end
-        sleep seconds
-      end
     end
   end
 
