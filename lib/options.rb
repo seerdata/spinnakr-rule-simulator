@@ -7,7 +7,6 @@ class Options
   def parse(args)
 
     options = OpenStruct.new
-    options.forever = false
     options.verbose = false
 
     options.i = 1
@@ -18,11 +17,6 @@ class Options
 
     opt_parser = OptionParser.new do |opts|
       opts.banner = "Usage: sim.rb [options]"
-
-      # Boolean switch.
-      opts.on("-f", "Run forever") do |v|
-        options.forever = v
-      end
 
       # Boolean switch.
       opts.on("-v", "Run verbosely") do |v|
@@ -43,16 +37,8 @@ class Options
 
       # Integer Options
 
-      opts.on("-i Iterations", Integer, "Integer Publish i iterations") do |x|
-        options.i = x
-      end
-
-      opts.on("-n Messages", Integer, "Integer Publish n messages") do |x|
+      opts.on("-n Rules", Integer, "Integer Send in n rules") do |x|
         options.n = x
-      end
-
-      opts.on("-s Seconds", Integer, "Integer Sleep s seconds") do |x|
-        options.s = x
       end
 
       # No argument, shows at tail.  This will print an options summary.
