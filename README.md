@@ -40,6 +40,16 @@ run this command.
 ruby sim.rb -t observer
 ```
 
+#### Dimension String
+
+By default the dimension string is **job-skills**.
+
+If you want a different dimension string then you can issue these commands
+
+```
+ruby sim.rb -m weather-city
+```
+
 #### Messages
 
 The default number of rules that get sent to redis is 2
