@@ -44,7 +44,7 @@ ruby sim.rb -t observer
 
 By default the dimension string is **job-skills**.
 
-If you want a different dimension string then you can issue these commands
+If you want a different dimension string then you can issue this commands
 
 ```
 ruby sim.rb -m weather-city
