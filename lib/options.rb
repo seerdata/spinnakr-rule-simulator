@@ -9,10 +9,8 @@ class Options
     options = OpenStruct.new
     options.verbose = false
 
-    options.i = 1
     options.m = "job-skills"
     options.n = 2
-    options.s = 10
     options.t = "comparator"
 
     opt_parser = OptionParser.new do |opts|
