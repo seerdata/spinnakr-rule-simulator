@@ -33,7 +33,7 @@ ruby sim.rb -v
 
 #### Event Type
 
-The default Event Type is comparator, to send in an observer Event Type
+The default Event Type is **comparator**, to send in an **observer** Event Type
 run this command.
 
 ```
@@ -50,7 +50,7 @@ If you want a different dimension string then you can issue this command.
 ruby sim.rb -m weather-city
 ```
 
-#### Messages
+#### Number of rules
 
 The default number of rules that get sent to redis is 2
 
