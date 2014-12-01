@@ -1,14 +1,9 @@
-The simulator assumes that you have RabbitMQ installed on the local
-instance where you will be running the simulator.
-
-To install RabbitMQ go here
-
-http://www.rabbitmq.com/download.html
 
 To install the simulator
 
 ```
-git clone git@github.com:stormasm/spinnakr-generic-simulator.git
+git clone git@github.com:stormasm/spinnakr-rule-simulator.git
+cd spinnakr-rule-simulator
 bundle install
 ```
 
