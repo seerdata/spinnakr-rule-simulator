@@ -7,7 +7,7 @@ cd spinnakr-rule-simulator
 bundle install
 ```
 
-**To run the simulator Spn.ee must first be running**
+**To run the simulator redis and Spn.ee must first be running**
 
 For install instructions to run Spn.ee go
 [here]
