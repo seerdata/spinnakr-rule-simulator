@@ -7,6 +7,15 @@ cd spinnakr-rule-simulator
 bundle install
 ```
 
+**To run the simulator Spn.ee must first be running**
+
+For install instructions to run Spn.ee go
+[here]
+(https://github.com/stormasm/spinnakr-spne)
+
+After Spn.ee is up and running then go to the lib directory
+in the rule simulator.
+
 **To run the simulator you must be in the lib directory**
 
 To see the options that you can pass into the simulator:
