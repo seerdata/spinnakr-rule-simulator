@@ -84,9 +84,7 @@ class Post
     for i in 0..x
       exchange.publish(rules[i].to_json)
     end
-    if options.verbose == true
-      print n, " messages were published to ", options.e; puts
-    end
+    print n, " messages were published to rabbitmq exchange ", options.e; puts
   end
 
   def process_rules(options,rules)

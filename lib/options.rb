@@ -36,6 +36,10 @@ class Options
     opt_parser = OptionParser.new do |opts|
       opts.banner = "Usage: sim.rb [options]"
 
+      opts.on("-x PostType", "String 2 = File, 3 = Rabbit") do |q|
+        options.x = q
+      end
+
       opts.on("-e Exchange", "String RabbitMQ Exchange name") do |q|
         options.e = q
       end
