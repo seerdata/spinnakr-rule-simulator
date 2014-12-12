@@ -18,7 +18,7 @@ class Poster
     n = options.n
     rule = get_rule_type(options)
     rules = rule.build_n_rules(n)
-    @post.process_rules(options,rules)
+    @post.process_data(options,rules)
     if options.verbose == true
       print options.n, " rules were published to the api"; puts
     end
