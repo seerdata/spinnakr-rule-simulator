@@ -11,7 +11,11 @@ class Post
   def buildURL(options)
     hostname = options.g
     port = options.p
-    endpoint = "api/1.0/rule/" + options.t
+    if options.ep2 != ""
+      endpoint = options.ep1 + "/" + options.ep2
+    else
+      endpoint = options.ep1
+    end
     url = "http://" + hostname + ":" + port + "/" + endpoint
   end
 

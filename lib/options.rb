@@ -9,9 +9,12 @@ class Options
     options = OpenStruct.new
     options.verbose = false
 
+    ### Rule Type can be comparator or observer
+    options.t = "comparator"
+
     ### 1 = URL, 2 = File, 3 = Queue
 
-    options.x = "3"
+    options.x = "1"
 
     ### One can post to a URL, File, or Queue
 
@@ -22,8 +25,10 @@ class Options
     options.g = "localhost"
     options.p = "4567"
 
-    ### Rule Type can be comparator or observer
-    options.t = "comparator"
+    ### Endpoint Part1 and Part2
+
+    options.ep1 = "api/1.0/rule/"
+    options.ep2 = options.t
 
     options.m = "job-skills"
     options.n = 2
@@ -45,6 +50,14 @@ class Options
 
       opts.on("-p Port", "Port number") do |q|
         options.p = q
+      end
+
+      opts.on("-ep1 Endpoint1", "Endpoint Part 1") do |q|
+        options.ep1 = q
+      end
+
+      opts.on("-ep2 Endpoint2", "Endpoint Part 2") do |q|
+        options.ep2 = q
       end
 
       # Boolean switch.
