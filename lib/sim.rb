@@ -3,9 +3,8 @@ require_relative './poster'
 
 class Sim
   def run(options)
-
-    post = Poster.new
-    post.publish(options)
+    poster = Poster.new
+    poster.publish(options)
     sleep 3.5
   end
 end

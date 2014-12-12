@@ -22,8 +22,9 @@ class RuleBase
   end
 
   def build_n_rules(n)
+    x = n - 1
     rules = []
-    for i in 0..n
+    for i in 0..x
       myrule = buildrule
       rules.push(myrule)
     end

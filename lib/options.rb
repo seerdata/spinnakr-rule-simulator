@@ -9,12 +9,43 @@ class Options
     options = OpenStruct.new
     options.verbose = false
 
+    ### 1 = URL, 2 = File, 3 = Queue
+
+    options.x = "1"
+
+    ### One can post to a URL, File, or Queue
+
+    options.q = "rules"
+    options.f = "rules.json"
+
+    ### Components of the URL
+    options.g = "localhost"
+    options.p = "4567"
+
+    ### Rule Type can be comparator or observer
+    options.t = "comparator"
+
     options.m = "job-skills"
     options.n = 2
-    options.t = "comparator"
 
     opt_parser = OptionParser.new do |opts|
       opts.banner = "Usage: sim.rb [options]"
+
+      opts.on("-q Queue", "Queue name") do |q|
+        options.q = q
+      end
+
+      opts.on("-f File", "File name") do |f|
+        options.f = f
+      end
+
+      opts.on("-n Host", "Host name") do |q|
+        options.g = q
+      end
+
+      opts.on("-p Port", "Port number") do |q|
+        options.p = q
+      end
 
       # Boolean switch.
       opts.on("-v", "Run verbosely") do |v|

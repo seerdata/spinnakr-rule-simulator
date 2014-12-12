@@ -15,21 +15,12 @@ class Poster
   end
 
   def publish_once(options)
-    rule = get_rule_type(options)
     n = options.n
-    type = options.t
+    rule = get_rule_type(options)
     rules = rule.build_n_rules(n)
-    for i in 1..n
-      if type == 'comparator'
-        @post.comparator(rules[i])
-      elsif type == 'observer'
-        @post.observer(rules[i])
-      else
-        print 'publish once type not found'
-      end
-    end
+    @post.process_rules(options,rules)
     if options.verbose == true
-      print n, " rules were published to the api"; puts
+      print options.n, " rules were published to the api"; puts
     end
   end
 
