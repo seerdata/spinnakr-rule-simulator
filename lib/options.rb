@@ -34,7 +34,7 @@ class Options
     opt_parser = OptionParser.new do |opts|
       opts.banner = "Usage: sim.rb [options]"
 
-      opts.on("-x PostType", "String 2 = File, 3 = Rabbit") do |q|
+      opts.on("-x PostType", "String 1 = URL, 2 = File, 3 = Rabbit") do |q|
         options.x = q
       end
 
