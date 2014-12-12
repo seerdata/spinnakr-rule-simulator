@@ -11,11 +11,11 @@ class Options
 
     ### 1 = URL, 2 = File, 3 = Queue
 
-    options.x = "2"
+    options.x = "3"
 
     ### One can post to a URL, File, or Queue
 
-    options.q = "rules"
+    options.e = "test.spnee.rules"
     options.f = "mydata.json"
 
     ### Components of the URL
@@ -31,8 +31,8 @@ class Options
     opt_parser = OptionParser.new do |opts|
       opts.banner = "Usage: sim.rb [options]"
 
-      opts.on("-q Queue", "Queue name") do |q|
-        options.q = q
+      opts.on("-e Exchange", "Exchange name") do |q|
+        options.e = q
       end
 
       opts.on("-f File", "File name") do |f|

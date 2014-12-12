@@ -1,7 +1,12 @@
-require 'rest_client'
+require 'bunny'
 require 'json'
+require 'rest_client'
 
 class Post
+
+  #
+  # RestClient
+  #
 
   def buildURL(options)
     hostname = options.g
@@ -25,6 +30,10 @@ class Post
     url = buildURL(options)
     post_rest(rules,url)
   end
+
+  #
+  # File
+  #
 
   def process_file(options,rules)
     filename = options.f
@@ -51,6 +60,28 @@ class Post
       end
       fx.write("]")
       print 'wrote json data to filename ', options.f; puts
+    end
+  end
+
+  #
+  # RabbitMQ
+  #
+
+  def process_queue(options,rules)
+    connection = Bunny.new
+    connection.start
+
+    channel = connection.create_channel
+    exchange_name = options.e
+    exchange = channel.fanout(exchange_name, :passive => true)
+
+    n = rules.length
+    x = n - 1
+    for i in 0..x
+      exchange.publish(rules[i].to_json)
+    end
+    if options.verbose == true
+      print n, " messages were published to ", options.e; puts
     end
   end
 
