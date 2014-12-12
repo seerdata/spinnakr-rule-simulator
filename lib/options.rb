@@ -27,8 +27,8 @@ class Options
 
     ### Endpoint Part1 and Part2
 
-    options.ep1 = "api/1.0/rule/"
-    options.ep2 = options.t
+    options.y = "api/1.0/rule/"
+    options.z = options.t
 
     options.m = "job-skills"
     options.n = 2
@@ -36,34 +36,30 @@ class Options
     opt_parser = OptionParser.new do |opts|
       opts.banner = "Usage: sim.rb [options]"
 
-      opts.on("-e Exchange", "Exchange name") do |q|
+      opts.on("-e Exchange", "String RabbitMQ Exchange name") do |q|
         options.e = q
       end
 
-      opts.on("-f File", "File name") do |f|
+      opts.on("-f File", "String File name") do |f|
         options.f = f
       end
 
-      opts.on("-n Host", "Host name") do |q|
+      opts.on("-g Host", "String Host name") do |q|
         options.g = q
       end
 
-      opts.on("-p Port", "Port number") do |q|
+      opts.on("-p Port", "String Port number") do |q|
         options.p = q
       end
 
-      opts.on("-ep1 Endpoint1", "Endpoint Part 1") do |q|
-        options.ep1 = q
+      opts.on("-y Endpoint1", "String Endpoint Part 1") do |q|
+        options.y = q
       end
 
-      opts.on("-ep2 Endpoint2", "Endpoint Part 2") do |q|
-        options.ep2 = q
+      opts.on("-z Endpoint2", "String Endpoint Part 2") do |q|
+        options.z = q
       end
 
-      # Boolean switch.
-      opts.on("-v", "Run verbosely") do |v|
-        options.verbose = v
-      end
 
       # Dimension Options
 
@@ -81,6 +77,11 @@ class Options
 
       opts.on("-n Rules", Integer, "Integer Send in n rules") do |x|
         options.n = x
+      end
+
+      # Boolean switch.
+      opts.on("-v", "Run verbosely") do |v|
+        options.verbose = v
       end
 
       # No argument, shows at tail.  This will print an options summary.
