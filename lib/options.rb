@@ -9,9 +9,6 @@ class Options
     options = OpenStruct.new
     options.verbose = false
 
-    ### Rule Type can be comparator or observer
-    options.t = "comparator"
-
     ### 1 = URL, 2 = File, 3 = Queue
 
     options.x = "1"
@@ -28,7 +25,8 @@ class Options
     ### Endpoint Part1 and Part2
 
     options.y = "api/1.0/rule"
-    options.z = options.t
+    # This is also the rule type
+    options.z = "comparator"
 
     options.m = "job-skills"
     options.n = 2
@@ -60,7 +58,7 @@ class Options
         options.y = q
       end
 
-      opts.on("-z Endpoint2", "String Endpoint Part 2") do |q|
+      opts.on("-z Endpoint2", "String Endpoint Part 2 and RuleType") do |q|
         options.z = q
       end
 
@@ -69,12 +67,6 @@ class Options
 
       opts.on("-m Dimension", "String Dimension name") do |m|
         options.m = m
-      end
-
-      # Rule Type
-
-      opts.on("-t Type", "String Rule Type name") do |t|
-        options.t = t
       end
 
       # Integer Options

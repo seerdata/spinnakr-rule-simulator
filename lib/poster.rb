@@ -25,18 +25,18 @@ class Poster
   end
 
   def get_rule_type(options)
-    if options.t == 'comparator'
+    if options.z == 'comparator'
       if options.verbose
         puts 'Inside Comparator'
       end
       RuleComparator.new(options)
-    elsif options.t == 'observer'
+    elsif options.z == 'observer'
       if options.verbose
         puts 'Inside Observer'
       end
       RuleObserver.new(options)
     else
-      print 'poster.rb ', options.t, ' is not a supported rule type'
+      print 'poster.rb ', options.z, ' is not a supported rule type'
       puts
       exit
     end
