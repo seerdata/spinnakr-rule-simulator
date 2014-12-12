@@ -27,7 +27,7 @@ class Options
 
     ### Endpoint Part1 and Part2
 
-    options.y = "api/1.0/rule/"
+    options.y = "api/1.0/rule"
     options.z = options.t
 
     options.m = "job-skills"
