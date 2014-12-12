@@ -11,12 +11,12 @@ class Options
 
     ### 1 = URL, 2 = File, 3 = Queue
 
-    options.x = "1"
+    options.x = "2"
 
     ### One can post to a URL, File, or Queue
 
     options.q = "rules"
-    options.f = "rules.json"
+    options.f = "mydata.json"
 
     ### Components of the URL
     options.g = "localhost"

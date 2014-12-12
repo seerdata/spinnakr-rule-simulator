@@ -26,6 +26,34 @@ class Post
     post_rest(rules,url)
   end
 
+  def process_file(options,rules)
+    filename = options.f
+
+    if filename == ""
+      puts "Please enter a filename"
+      exit
+    end
+
+    json_array_length = rules.length
+    count = 1
+
+    if json_array_length != 0
+      fx = File.open(filename.to_s,"w")
+      fx.write("[")
+      rules.each do |item|
+        myjson = JSON::generate(item)
+        fx.write(myjson)
+        if count < json_array_length
+          fx.write(",")
+          count = count + 1
+          print 'count = ', count; puts
+        end
+      end
+      fx.write("]")
+      print 'wrote json data to filename ', options.f; puts
+    end
+  end
+
   def process_rules(options,rules)
     x = options.x
     if (x == "1")
