@@ -7,11 +7,11 @@ cd spinnakr-rule-simulator
 bundle install
 ```
 
-**To run the simulator redis and Spn.ee must first be running**
+**To run the simulator rabbitmq, redis and Spn.ee must first be running**
 
 For install instructions to run Spn.ee go
 [here]
-(https://github.com/stormasm/spinnakr-spne)
+(https://github.com/spinnakr/spnee-ruby).
 
 After Spn.ee is up and running then go to the lib directory
 in the rule simulator.
@@ -46,7 +46,7 @@ The default Event Type is **comparator**, to send in an **observer** Event Type
 run this command.
 
 ```
-ruby sim.rb -t observer
+ruby sim.rb -z observer
 ```
 
 #### Dimension String
